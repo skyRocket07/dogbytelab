@@ -14,7 +14,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer userId;
-	private String userame;
+	private String username;
 	private String email;
 	private String password;
 	private String profilePicture;
@@ -26,11 +26,12 @@ public class User {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public String getUserame() {
-		return userame;
+	
+	public String getUsername() {
+		return username;
 	}
-	public void setUserame(String userame) {
-		this.userame = userame;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getEmail() {
 		return email;
@@ -58,7 +59,7 @@ public class User {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(bio, email, password, profilePicture, userId, userame);
+		return Objects.hash(bio, email, password, profilePicture, userId, username);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -71,7 +72,7 @@ public class User {
 		User other = (User) obj;
 		return Objects.equals(bio, other.bio) && Objects.equals(email, other.email)
 				&& Objects.equals(password, other.password) && Objects.equals(profilePicture, other.profilePicture)
-				&& Objects.equals(userId, other.userId) && Objects.equals(userame, other.userame);
+				&& Objects.equals(userId, other.userId) && Objects.equals(username, other.username);
 	}
 
 }
