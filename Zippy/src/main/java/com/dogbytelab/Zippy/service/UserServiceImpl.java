@@ -1,10 +1,12 @@
 package com.dogbytelab.Zippy.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 
 import com.dogbytelab.Zippy.dto.UserDto;
 import com.dogbytelab.Zippy.entity.User;
@@ -41,6 +43,20 @@ public class UserServiceImpl implements UserService{
 //		user.setPassword(userDto.getPassword());
 		userRepository.save(user);
 		return user.getUserId();
+	}
+
+
+	@Override
+	public Boolean verify(Integer token) {
+		Optional<User> optional = userRepository.findById(token);
+        if (optional.isPresent()) {
+            User user = optional.get();
+            user.setIsVerified(true);
+            userRepository.save(user);
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 }

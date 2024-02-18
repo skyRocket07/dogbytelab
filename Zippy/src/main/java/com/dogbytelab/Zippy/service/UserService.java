@@ -6,4 +6,6 @@ public interface UserService {
 
 	Integer register(UserDto userDto);
 
+	Boolean verify(Integer token);
+
 }

@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="User")
+@Table(name="User1")
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -19,7 +19,16 @@ public class User {
 	private String password;
 	private String profilePicture;
 	private String bio;
+	private Boolean isVerified;
 	
+	
+	
+	public Boolean getIsVerified() {
+		return isVerified;
+	}
+	public void setIsVerified(Boolean isVerified) {
+		this.isVerified = isVerified;
+	}
 	public Integer getUserId() {
 		return userId;
 	}
